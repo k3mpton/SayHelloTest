@@ -65,15 +65,61 @@ func (x *Message) GetBody() string {
 	return ""
 }
 
+type Reply struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	HelloName     string                 `protobuf:"bytes,1,opt,name=HelloName,proto3" json:"HelloName,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Reply) Reset() {
+	*x = Reply{}
+	mi := &file_HelloChat_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Reply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Reply) ProtoMessage() {}
+
+func (x *Reply) ProtoReflect() protoreflect.Message {
+	mi := &file_HelloChat_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Reply.ProtoReflect.Descriptor instead.
+func (*Reply) Descriptor() ([]byte, []int) {
+	return file_HelloChat_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Reply) GetHelloName() string {
+	if x != nil {
+		return x.HelloName
+	}
+	return ""
+}
+
 var File_HelloChat_proto protoreflect.FileDescriptor
 
 const file_HelloChat_proto_rawDesc = "" +
 	"\n" +
 	"\x0fHelloChat.proto\x12\x04chat\"\x1d\n" +
 	"\aMessage\x12\x12\n" +
-	"\x04body\x18\x01 \x01(\tR\x04body20\n" +
+	"\x04body\x18\x01 \x01(\tR\x04body\"%\n" +
+	"\x05Reply\x12\x1c\n" +
+	"\tHelloName\x18\x01 \x01(\tR\tHelloName20\n" +
 	"\x04Chat\x12(\n" +
-	"\bSayHello\x12\r.chat.Message\x1a\r.chat.MessageB'Z%github.com/legiseen/chatHelloPro;legab\x06proto3"
+	"\bSayHello\x12\r.chat.Message\x1a\v.chat.Reply\"\x00B'Z%github.com/legiseen/chatHelloPro;legab\x06proto3"
 
 var (
 	file_HelloChat_proto_rawDescOnce sync.Once
@@ -87,13 +133,14 @@ func file_HelloChat_proto_rawDescGZIP() []byte {
 	return file_HelloChat_proto_rawDescData
 }
 
-var file_HelloChat_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_HelloChat_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_HelloChat_proto_goTypes = []any{
 	(*Message)(nil), // 0: chat.Message
+	(*Reply)(nil),   // 1: chat.Reply
 }
 var file_HelloChat_proto_depIdxs = []int32{
 	0, // 0: chat.Chat.SayHello:input_type -> chat.Message
-	0, // 1: chat.Chat.SayHello:output_type -> chat.Message
+	1, // 1: chat.Chat.SayHello:output_type -> chat.Reply
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -112,7 +159,7 @@ func file_HelloChat_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_HelloChat_proto_rawDesc), len(file_HelloChat_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

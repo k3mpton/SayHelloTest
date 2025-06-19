@@ -26,7 +26,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ChatClient interface {
-	SayHello(ctx context.Context, in *Message, opts ...grpc.CallOption) (*Message, error)
+	SayHello(ctx context.Context, in *Message, opts ...grpc.CallOption) (*Reply, error)
 }
 
 type chatClient struct {
@@ -37,9 +37,9 @@ func NewChatClient(cc grpc.ClientConnInterface) ChatClient {
 	return &chatClient{cc}
 }
 
-func (c *chatClient) SayHello(ctx context.Context, in *Message, opts ...grpc.CallOption) (*Message, error) {
+func (c *chatClient) SayHello(ctx context.Context, in *Message, opts ...grpc.CallOption) (*Reply, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Message)
+	out := new(Reply)
 	err := c.cc.Invoke(ctx, Chat_SayHello_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func (c *chatClient) SayHello(ctx context.Context, in *Message, opts ...grpc.Cal
 // All implementations must embed UnimplementedChatServer
 // for forward compatibility.
 type ChatServer interface {
-	SayHello(context.Context, *Message) (*Message, error)
+	SayHello(context.Context, *Message) (*Reply, error)
 	mustEmbedUnimplementedChatServer()
 }
 
@@ -62,7 +62,7 @@ type ChatServer interface {
 // pointer dereference when methods are called.
 type UnimplementedChatServer struct{}
 
-func (UnimplementedChatServer) SayHello(context.Context, *Message) (*Message, error) {
+func (UnimplementedChatServer) SayHello(context.Context, *Message) (*Reply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
 }
 func (UnimplementedChatServer) mustEmbedUnimplementedChatServer() {}
