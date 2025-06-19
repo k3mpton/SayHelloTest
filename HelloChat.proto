@@ -4,10 +4,14 @@ package chat;
 
 option go_package = "github.com/legiseen/chatHelloPro;lega";
 
+service Chat { 
+    rpc SayHello(Message) returns (Reply) {}
+}
+
 message Message { 
     string body = 1; 
 }
 
-service Chat { 
-    rpc SayHello(Message) returns (Message); 
+message Reply { 
+    string HelloName = 1;
 }
