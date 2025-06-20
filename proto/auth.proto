@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package auth; 
+
+option go_package = "github.com/legi/auth;k3me";
+
+service Auth { 
+    rpc Reg(RegRequest) returns (RegResponse) {}
+    rpc Login (LoginRequest) returns (LoginResponse) {}
+}
+
+message RegRequest { 
+    string email = 1; 
+    string name = 2; 
+    string password = 3;
+    string city = 4; 
+    string gender = 5; 
+}
+
+message RegResponse { 
+    int64 UserId = 1; 
+    string HelloName = 2; 
+}
+
+message LoginRequest { 
+    int64 LogUserId = 1; 
+    string email = 2; 
+    string password = 3; 
+}
+
+message LoginResponse { 
+    int64 LUserId = 1; 
+    string Svosrasheniem = 2;
+}
+
