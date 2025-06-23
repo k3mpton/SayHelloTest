@@ -1,4 +1,4 @@
-module github.com/k3mpton/renatos
+module github.com/k3mpton/SayHelloTest
 
 go 1.24.1
 
