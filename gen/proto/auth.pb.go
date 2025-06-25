@@ -26,8 +26,7 @@ type RegRequest struct {
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
-	City          string                 `protobuf:"bytes,4,opt,name=city,proto3" json:"city,omitempty"`
-	Gender        string                 `protobuf:"bytes,5,opt,name=gender,proto3" json:"gender,omitempty"`
+	Gender        string                 `protobuf:"bytes,4,opt,name=gender,proto3" json:"gender,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -79,13 +78,6 @@ func (x *RegRequest) GetName() string {
 func (x *RegRequest) GetPassword() string {
 	if x != nil {
 		return x.Password
-	}
-	return ""
-}
-
-func (x *RegRequest) GetCity() string {
-	if x != nil {
-		return x.City
 	}
 	return ""
 }
@@ -265,14 +257,13 @@ var File_proto_auth_proto protoreflect.FileDescriptor
 
 const file_proto_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x10proto/auth.proto\x12\x04auth\"~\n" +
+	"\x10proto/auth.proto\x12\x04auth\"j\n" +
 	"\n" +
 	"RegRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x12\n" +
-	"\x04city\x18\x04 \x01(\tR\x04city\x12\x16\n" +
-	"\x06gender\x18\x05 \x01(\tR\x06gender\"C\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x16\n" +
+	"\x06gender\x18\x04 \x01(\tR\x06gender\"C\n" +
 	"\vRegResponse\x12\x16\n" +
 	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\x1c\n" +
 	"\tHelloName\x18\x02 \x01(\tR\tHelloName\"^\n" +
