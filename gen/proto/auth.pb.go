@@ -25,7 +25,7 @@ type RegRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	PasswordHash  string                 `protobuf:"bytes,3,opt,name=passwordHash,proto3" json:"passwordHash,omitempty"`
+	PasswordHash  []byte                 `protobuf:"bytes,3,opt,name=passwordHash,proto3" json:"passwordHash,omitempty"`
 	Gender        string                 `protobuf:"bytes,4,opt,name=gender,proto3" json:"gender,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -75,11 +75,11 @@ func (x *RegRequest) GetName() string {
 	return ""
 }
 
-func (x *RegRequest) GetPasswordHash() string {
+func (x *RegRequest) GetPasswordHash() []byte {
 	if x != nil {
 		return x.PasswordHash
 	}
-	return ""
+	return nil
 }
 
 func (x *RegRequest) GetGender() string {
@@ -262,7 +262,7 @@ const file_proto_auth_proto_rawDesc = "" +
 	"RegRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\"\n" +
-	"\fpasswordHash\x18\x03 \x01(\tR\fpasswordHash\x12\x16\n" +
+	"\fpasswordHash\x18\x03 \x01(\fR\fpasswordHash\x12\x16\n" +
 	"\x06gender\x18\x04 \x01(\tR\x06gender\"C\n" +
 	"\vRegResponse\x12\x16\n" +
 	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\x1c\n" +
